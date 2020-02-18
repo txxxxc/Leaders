@@ -1,0 +1,29 @@
+html {
+  font-family: Noto, "Hiragino Sans", Helvetica, Arial, sans-serif;
+  color: #333333;
+  background-color: #F6F6F4;
+}
+
+.content {
+  width: 868px;
+  margin: 0 auto;
+  padding: 16px;
+  background-color: #ffffff;
+}
+
+.header {
+  display: flex;
+}
+
+.icon {
+  margin-right: 8px;
+  border-radius: 4px;
+}
+
+.author {
+  margin-right: 8px;
+}
+
+.date {
+  color: #999999;
+}
