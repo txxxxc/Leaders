@@ -5,6 +5,20 @@ export default ({ data }) => {
   const node = data.allMarkdownRemark.edges[0].node
     const siteData = useStaticQuery(graphql`
       query MyQuery {
+        allImageSharp {
+          edges {
+            node {
+              fixed(width: 32) {
+                base64
+                width
+                height
+                src
+                srcSet
+                originalName
+              }
+            }
+          }
+        }
         file(relativePath: { eq: "images/icon.png" }) {
           childImageSharp {
             # Specify a fixed image and fragment.
@@ -38,11 +52,19 @@ export default ({ data }) => {
         }
       }
     `)
-    console.log(siteData)
+    let hoge;
+    if (siteData.allImageSharp.edges) {
+      hoge = siteData.allImageSharp.edges.filter(
+        image => image.node.fixed.originalName === "tonkotsuRamen.png"
+      )
+    }
+    console.log(siteData.allImageSharp.edges)
+    console.log({ hoge })
   return (
     <>
       <div className="header">
         <div className="header-content">
+          <Img className="icon" fixed={hoge[0].node.fixed} />
           <span className="title">Leadersへの意気込み</span>
         </div>
       </div>

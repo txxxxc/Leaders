@@ -2,6 +2,7 @@ html {
   font-family: Noto, "Hiragino Sans", Helvetica, Arial, sans-serif;
   color: #333333;
   background-color: #F6F6F4;
+  line-height: 2;
 }
 
 body {
@@ -25,13 +26,12 @@ a {
 }
 
 .header-content {
-  width: 58%;
+  width: 56%;
   margin: 0 auto;
 }
 
 .title {
   color: #fafafa;
-  padding-left: 16px;
   font-size: 32px;
   font-weight: 600;
 }
