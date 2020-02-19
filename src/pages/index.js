@@ -42,7 +42,9 @@ export default ({ data }) => {
   return (
     <>
       <div className="header">
-        <span className="title">Leadersへの意気込み</span>
+        <div className="header-content">
+          <span className="title">Leadersへの意気込み</span>
+        </div>
       </div>
       <div className="content">
         <div className="information">

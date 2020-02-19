@@ -24,6 +24,11 @@ a {
   background-color: #F0DA50;
 }
 
+.header-content {
+  width: 58%;
+  margin: 0 auto;
+}
+
 .title {
   color: #fafafa;
   padding-left: 16px;
