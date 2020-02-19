@@ -1,47 +1,58 @@
 import React from "react"
-import { graphql } from "gatsby"
-
+import { useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 export default ({ data }) => {
-  console.log({data})
   const node = data.allMarkdownRemark.edges[0].node
-  console.log(node)
-  return (
-    <div class="content">
-      <div class="header">
-        <img
-          class="icon"
-          src={node.frontmatter.image.publicURL}
-          alt=""
-          width="32px"
-        />
-        <div class="author">{node.frontmatter.author}</div>
-        <div class="date">{node.frontmatter.date}</div>
-      </div>
-      <div>{node.frontmatter.title}</div>
-      <div dangerouslySetInnerHTML={{ __html: node.html }} />
-    </div>
-  )
-}
-
-export const query = graphql`
-        query {
-          allMarkdownRemark {
-            totalCount
-            edges {
-              node {
-                id
-                frontmatter {
-                  title
-                  date(formatString: "DD MMMM, YYYY")
-                  author
-                  image {
-                    publicURL
-                    relativePath
-                  }
-                }
-                html
-              }
+    const siteData = useStaticQuery(graphql`
+      query MyQuery {
+        file(relativePath: { eq: "images/icon.png" }) {
+          childImageSharp {
+            # Specify a fixed image and fragment.
+            # The default width is 400 pixels
+            fixed(width: 32) {
+              base64
+              width
+              height
+              src
+              srcSet
             }
           }
         }
-      `
+        allMarkdownRemark {
+          totalCount
+          edges {
+            node {
+              id
+              frontmatter {
+                title
+                date(formatString: "DD MMMM, YYYY")
+                author
+                image {
+                  publicURL
+                  relativePath
+                }
+              }
+              html
+            }
+          }
+        }
+      }
+    `)
+    console.log(siteData)
+  return (
+    <>
+      <div className="header">
+        <span className="title">Leadersへの意気込み</span>
+      </div>
+      <div className="content">
+        <div className="information">
+          <Img className="icon" fixed={siteData.file.childImageSharp.fixed} />
+          <div className="author">{node.frontmatter.author}</div>
+          <div className="date">{node.frontmatter.date}</div>
+        </div>
+        <h1>{node.frontmatter.title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: node.html }} />
+      </div>
+    </>
+  )
+}

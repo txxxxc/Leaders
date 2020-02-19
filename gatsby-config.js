@@ -7,6 +7,7 @@
 module.exports = {
   /* Your site config here */
   plugins: [
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -19,6 +20,15 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-table-of-contents`,
+            options: {
+              exclude: '目次',
+              fromHeading: 1,
+              toHeading: 6,
+            },
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {

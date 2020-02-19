@@ -4,14 +4,42 @@ html {
   background-color: #F6F6F4;
 }
 
-.content {
-  width: 868px;
-  margin: 0 auto;
-  padding: 16px;
-  background-color: #ffffff;
+body {
+  margin: 0
+}
+
+.toc * {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #F0DA50;
 }
 
 .header {
+  height: 56px;
+  width: 100%;
+  padding-top: 8px;
+  background-color: #F0DA50;
+}
+
+.title {
+  color: #fafafa;
+  padding-left: 16px;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.content {
+  width: 868px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 32px;
+  background-color: #ffffff;
+}
+
+.information {
   display: flex;
 }
 
